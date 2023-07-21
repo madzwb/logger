@@ -27,20 +27,11 @@ else:
     LOG_TO_FILE     = False
 
 
-if      LOG_FILE_TRUNCATE\
-    and SCRIPT\
-    and (filename := os.path.splitext(os.path.basename(SCRIPT))[0])\
-:
-    path = os.path.dirname(SCRIPT)
-    full = (path + "/" + filename + ".log")
-    with open(full,"w") as file:
-        pass
-
 FIELDS  =   [
                 "SCRIPT",
                 "TEST",
                 "LOGGING",
-                "LOG_FILE_TRUNCATE"
+                "LOG_FILE_TRUNCATE",
                 "DEBUG",
                 "LOG_MULTI",
                 "LOG_TO_TERMINAL",
@@ -59,5 +50,7 @@ def __call__(conf = None):
                 }
         return conf
     else:
+        # container = type("Config", (object,), _dict)
+        # conf = container()
         for k,v in conf.items():
             setattr(sys.modules[__name__], k, conf[k])

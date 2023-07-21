@@ -35,3 +35,13 @@ def init():
 
     level = logging.DEBUG if config.DEBUG else logging.INFO
     logger.setLevel(level)
+
+def truncate():
+    if      config.LOG_FILE_TRUNCATE                                            \
+        and config.SCRIPT                                                       \
+        and (filename := os.path.splitext(os.path.basename(config.SCRIPT))[0])  \
+    :
+        path = os.path.dirname(config.SCRIPT)
+        full = (path + "/" + filename + ".log")
+        with open(full,"w") as file:
+            pass

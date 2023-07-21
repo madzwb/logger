@@ -1,3 +1,3 @@
 
-from . import config
-from . import logger
+from . import config# as config
+from . import logger# as logger
